@@ -1,7 +1,7 @@
-package com.github.hahnbeelee.aidocwriterplugin.services
+package com.mintlify.document.services
 
 import com.intellij.openapi.project.Project
-import com.github.hahnbeelee.aidocwriterplugin.MyBundle
+import com.mintlify.document.MyBundle
 
 class MyProjectService(project: Project) {
 

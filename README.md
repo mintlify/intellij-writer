@@ -1,4 +1,4 @@
-# ai_doc_writer_plugin
+# ✍️ AI Doc Writer - ⌘⇧.
 
 ![Build](https://github.com/mintlify/ai_doc_writer_plugin/workflows/Build/badge.svg)
 [![Version](https://img.shields.io/jetbrains/plugin/v/PLUGIN_ID.svg)](https://plugins.jetbrains.com/plugin/PLUGIN_ID)

@@ -1,9 +1,9 @@
-package com.github.hahnbeelee.aidocwriterplugin.listeners
+package com.mintlify.document.listeners
 
 import com.intellij.openapi.components.service
 import com.intellij.openapi.project.Project
 import com.intellij.openapi.project.ProjectManagerListener
-import com.github.hahnbeelee.aidocwriterplugin.services.MyProjectService
+import com.mintlify.document.services.MyProjectService
 
 internal class MyProjectManagerListener : ProjectManagerListener {
 

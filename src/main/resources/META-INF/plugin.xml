@@ -1,18 +1,18 @@
 <!-- Plugin Configuration File. Read more: https://plugins.jetbrains.com/docs/intellij/plugin-configuration-file.html -->
 <idea-plugin>
-    <id>com.github.hahnbeelee.aidocwriterplugin</id>
-    <name>ai_doc_writer_plugin</name>
+    <id>com.mintlify.document</id>
+    <name>AI Doc Writer</name>
     <vendor>Mintlify</vendor>
 
     <depends>com.intellij.modules.platform</depends>
 
     <extensions defaultExtensionNs="com.intellij">
-        <applicationService serviceImplementation="com.github.hahnbeelee.aidocwriterplugin.services.MyApplicationService"/>
-        <projectService serviceImplementation="com.github.hahnbeelee.aidocwriterplugin.services.MyProjectService"/>
+        <applicationService serviceImplementation="com.mintlify.document.services.MyApplicationService"/>
+        <projectService serviceImplementation="com.mintlify.document.services.MyProjectService"/>
     </extensions>
 
     <applicationListeners>
-        <listener class="com.github.hahnbeelee.aidocwriterplugin.listeners.MyProjectManagerListener"
+        <listener class="com.mintlify.document.listeners.MyProjectManagerListener"
                   topic="com.intellij.openapi.project.ProjectManagerListener"/>
     </applicationListeners>
 

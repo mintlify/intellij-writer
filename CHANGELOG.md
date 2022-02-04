@@ -1,6 +1,6 @@
 <!-- Keep a Changelog guide -> https://keepachangelog.com -->
 
-# ai_doc_writer_plugin Changelog
+# AI Doc Writer Changelog
 
 ## [Unreleased]
 ### Added

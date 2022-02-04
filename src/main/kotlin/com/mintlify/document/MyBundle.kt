@@ -1,4 +1,4 @@
-package com.github.hahnbeelee.aidocwriterplugin
+package com.mintlify.document
 
 import com.intellij.DynamicBundle
 import org.jetbrains.annotations.NonNls

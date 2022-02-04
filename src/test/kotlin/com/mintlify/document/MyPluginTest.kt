@@ -1,4 +1,4 @@
-package com.github.hahnbeelee.aidocwriterplugin
+package com.mintlify.document
 
 import com.intellij.ide.highlighter.XmlFileType
 import com.intellij.psi.xml.XmlFile

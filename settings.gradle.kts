@@ -1,1 +1,1 @@
-rootProject.name = "ai_doc_writer_plugin"
+rootProject.name = "AI Doc Writer"
