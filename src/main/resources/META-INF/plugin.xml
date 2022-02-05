@@ -17,19 +17,13 @@
     </applicationListeners>
 
     <actions>
-        <action
-                id="StackOverflow.Search.Editor"
-                class="SearchAction"
-                text="Search on Stack Overflow"
-                description="Search on Stack Overflow">
-            <add-to-group group-id="EditorPopupMenu" anchor="last"/>
-        </action>
-        <action
-                id="StackOverflow.Search.Console"
-                class="SearchAction"
-                text="Search on Stack Overflow"
-                description="Search on Stack Overflow">
-            <add-to-group group-id="ConsoleEditorPopupMenu" anchor="last"/>
+        <action id="org.intellij.sdk.action.PopupDialogAction"
+                class="com.mintlify.document.actions.PopupDialogAction"
+                text="Generate docs"
+                description="SDK action example">keyboard-shortcut
+            <add-to-group group-id="EditorPopupMenu" anchor="first"/>
+            <override-text place="MainMenu" text="Pop Dialog Action"/>
+            <keyboard-shortcut first-keystroke="control shift PERIOD" keymap="$default"/>
         </action>
     </actions>
 </idea-plugin>
