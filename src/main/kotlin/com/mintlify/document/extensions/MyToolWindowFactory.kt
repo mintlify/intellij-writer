@@ -8,16 +8,17 @@ import com.intellij.ui.content.Content
 import com.intellij.ui.content.ContentFactory
 
 class MyToolWindowFactory : ToolWindowFactory {
+
     /**
      * Create the tool window content.
      *
      * @param project    current project
      * @param toolWindow current tool window
      */
-    fun createToolWindowContent(@NotNull project: Project?, @NotNull toolWindow: ToolWindow) {
+    override fun createToolWindowContent(project: Project, toolWindow: ToolWindow) {
         val myToolWindow = MyToolWindow(toolWindow)
         val contentFactory: ContentFactory = ContentFactory.SERVICE.getInstance()
-        val content: Content = contentFactory.createContent(myToolWindow.getContent(), "", false)
-        toolWindow.getContentManager().addContent(content)
+        val content: Content = contentFactory.createContent(myToolWindow.content, "", false)
+        toolWindow.contentManager.addContent(content)
     }
 }
