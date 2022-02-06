@@ -32,18 +32,28 @@ public class PopupDialogAction : AnAction() {
                 val documentText = document.text
                 val start = documentText.indexOf(selectedText, selectionStart)
 
+                // Get space before start line
+                val startLineNumber = document.getLineNumber(start)
+                val startLineStartOffset = document.getLineStartOffset(startLineNumber)
+                val startLineEndOffset = document.getLineEndOffset(startLineNumber)
+                val startLine = documentText.substring(startLineStartOffset, startLineEndOffset)
+                val whitespaceBeforeLine = getWhitespaceSpaceBefore(startLine);
+
                 val languageId = e.getData(LangDataKeys.PSI_FILE)?.language?.displayName?.lowercase()
-                val width = editor.settings.getRightMargin(project);
+                val width = editor.settings.getRightMargin(project) - whitespaceBeforeLine.length;
                 val response = getDocFromApi(selectedText, "testingID", languageId, documentText, width)
                 indicator.fraction = 1.0
                 if (response != null) {
-                    // Get space before start line
-                    val startLineNumber = document.getLineNumber(start)
-                    val startLineStartOffset = document.getLineStartOffset(startLineNumber)
-                    val startLineEndOffset = document.getLineEndOffset(startLineNumber)
-                    val startLine = documentText.substring(startLineStartOffset, startLineEndOffset)
                     // Insert docstring
-                    val insertString = response.docstring + '\n' + getWhitespaceSpaceBefore(startLine)
+                    val docstringByLines = response.docstring.lines().mapIndexed { index, line -> (
+                            if (index === 0) {
+                                line
+                            } else {
+                                whitespaceBeforeLine + line
+                            }
+                      )
+                    }
+                    val insertString = docstringByLines.joinToString("\n") + '\n' + whitespaceBeforeLine
                     WriteCommandAction.runWriteCommandAction(project) {
                         document.insertString(start, insertString)
                     }
