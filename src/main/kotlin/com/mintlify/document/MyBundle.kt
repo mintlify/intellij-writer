@@ -15,5 +15,5 @@ object MyBundle : DynamicBundle(BUNDLE) {
 
     @Suppress("SpreadOperator", "unused")
     fun messagePointer(@PropertyKey(resourceBundle = BUNDLE) key: String, vararg params: Any) =
-        getLazyMessage(key, *params)
+	    getLazyMessage(key, *params)
 }

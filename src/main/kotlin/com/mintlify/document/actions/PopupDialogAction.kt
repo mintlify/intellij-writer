@@ -34,28 +34,19 @@ public class PopupDialogAction : AnAction() {
 
                 // Get space before start line
                 val startLineNumber = document.getLineNumber(start)
-                val startLineStartOffset = document.getLineStartOffset(startLineNumber)
-                val startLineEndOffset = document.getLineEndOffset(startLineNumber)
-                val startLine = documentText.substring(startLineStartOffset, startLineEndOffset)
-                val whitespaceBeforeLine = getWhitespaceSpaceBefore(startLine)
+                var whitespaceBeforeLine = getWhitespaceOfLineAtOffset(document, startLineNumber)
 
                 val languageId = e.getData(LangDataKeys.PSI_FILE)?.language?.displayName?.lowercase()
-                val width = editor.settings.getRightMargin(project) - whitespaceBeforeLine.length;
+                val width = editor.settings.getRightMargin(project) - whitespaceBeforeLine.length
                 val response = getDocFromApi(selectedText, "testingID", languageId, documentText, width)
                 indicator.fraction = 1.0
                 if (response != null) {
-                    // Insert docstring
-                    val docstringByLines = response.docstring.lines().mapIndexed { index, line -> (
-                        if (index == 0) {
-                            line
-                        } else {
-                            whitespaceBeforeLine + line
-                        }
-                      )
-                    }
-                    val insertString = docstringByLines.joinToString("\n") + '\n' + whitespaceBeforeLine
+                    val isBelowStartLine = response.position === "belowStartLine";
+                    val insertPosition = if (isBelowStartLine) document.getLineStartOffset(startLineNumber + 1) else start
+                    val insertDoc = getFormattedInsertDoc(response.docstring, whitespaceBeforeLine, isBelowStartLine)
+
                     WriteCommandAction.runWriteCommandAction(project) {
-                        document.insertString(start, insertString)
+                        document.insertString(insertPosition, insertDoc)
                     }
                 }
             }
@@ -68,4 +59,32 @@ fun getWhitespaceSpaceBefore(text: String): String {
     val frontWhiteSpaceRemoved = text.trimStart()
     val firstNoneWhiteSpaceIndex = text.indexOf(frontWhiteSpaceRemoved)
     return text.substring(0, firstNoneWhiteSpaceIndex)
+}
+
+fun getWhitespaceOfLineAtOffset(document: Document, lineNumber: Int): String {
+    val documentText = document.text
+
+    val startLineStartOffset = document.getLineStartOffset(lineNumber)
+    val startLineEndOffset = document.getLineEndOffset(lineNumber)
+    val startLine = documentText.substring(startLineStartOffset, startLineEndOffset)
+    return getWhitespaceSpaceBefore(startLine)
+}
+
+fun getFormattedInsertDoc(docstring: String, whitespaceBeforeLine: String, isBelowStartLine: Boolean = false): String {
+    var differingWhitespaceBeforeLine = whitespaceBeforeLine
+    var lastLineWhitespace = ""
+    // Format for tabbed position
+    if (isBelowStartLine) {
+        differingWhitespaceBeforeLine = '\t' + differingWhitespaceBeforeLine
+    } else {
+        lastLineWhitespace = differingWhitespaceBeforeLine
+    }
+    val docstringByLines = docstring.lines().mapIndexed { index, line -> (
+        if (index == 0 && !isBelowStartLine) {
+            line
+        } else {
+            differingWhitespaceBeforeLine + line
+        })
+    }
+    return docstringByLines.joinToString("\n") + '\n' + lastLineWhitespace
 }

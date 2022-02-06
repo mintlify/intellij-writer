@@ -20,6 +20,7 @@ data class RequestBody(
 
 data class Response(
     var docstring: String,
+    var position: String,
 )
 
 fun getDocFromApi(
