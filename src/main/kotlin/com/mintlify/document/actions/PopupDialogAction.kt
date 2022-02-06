@@ -37,7 +37,7 @@ public class PopupDialogAction : AnAction() {
                 val startLineStartOffset = document.getLineStartOffset(startLineNumber)
                 val startLineEndOffset = document.getLineEndOffset(startLineNumber)
                 val startLine = documentText.substring(startLineStartOffset, startLineEndOffset)
-                val whitespaceBeforeLine = getWhitespaceSpaceBefore(startLine);
+                val whitespaceBeforeLine = getWhitespaceSpaceBefore(startLine)
 
                 val languageId = e.getData(LangDataKeys.PSI_FILE)?.language?.displayName?.lowercase()
                 val width = editor.settings.getRightMargin(project) - whitespaceBeforeLine.length;
@@ -46,11 +46,11 @@ public class PopupDialogAction : AnAction() {
                 if (response != null) {
                     // Insert docstring
                     val docstringByLines = response.docstring.lines().mapIndexed { index, line -> (
-                            if (index === 0) {
-                                line
-                            } else {
-                                whitespaceBeforeLine + line
-                            }
+                        if (index == 0) {
+                            line
+                        } else {
+                            whitespaceBeforeLine + line
+                        }
                       )
                     }
                     val insertString = docstringByLines.joinToString("\n") + '\n' + whitespaceBeforeLine
