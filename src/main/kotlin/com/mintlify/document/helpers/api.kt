@@ -10,11 +10,11 @@ data class RequestBody(
     var code: String,
     var languageId: String?,
     var context: String,
+    var width: Int,
     var commented: Boolean,
     var email: String,
     var docStyle: String,
     var source: String,
-    var width: Int,
     // TODO: Add location
 )
 
@@ -27,13 +27,13 @@ fun getDocFromApi(
     userId: String,
     languageId: String?,
     context: String = code,
+    width: Int = 80,
     commented: Boolean = true,
     email: String = "",
     docStyle: String = "Auto-detect",
     source: String = "intellij",
-    width: Int = 80
 ): Response? {
-    val body = RequestBody(userId, code, languageId, context, commented, email, docStyle, source, width);
+    val body = RequestBody(userId, code, languageId, context, width, commented, email, docStyle, source);
     val (_, _, result) = "http://localhost:5000/docs/write/v2".httpPost()
         .jsonBody(Gson().toJson(body).toString())
         .responseString()
