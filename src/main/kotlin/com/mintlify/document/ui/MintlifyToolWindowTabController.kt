@@ -5,11 +5,6 @@ import com.intellij.openapi.util.Key
 
 interface MintlifyToolWindowTabController {
 
-  val componentController: MintlifyToolWindowTabComponentController?
-
-  fun canResetRemoteOrAccount(): Boolean
-  fun resetRemoteAndAccount()
-
   companion object {
     val KEY = Key.create<MintlifyToolWindowTabController>("Mintlify.Document.ToolWindow.Tab.Controller")
   }

@@ -8,6 +8,9 @@ import com.intellij.ui.content.Content
 import com.intellij.ui.content.ContentFactory
 import com.intellij.openapi.project.DumbAware
 import com.intellij.openapi.util.Disposer
+import com.intellij.openapi.wm.ex.ToolWindowEx
+import com.mintlify.document.ui.MintlifyToolWindowTabController
+import com.mintlify.document.ui.MintlifyToolWindowTabControllerImpl
 import javax.swing.JPanel
 
 class MyToolWindowFactory : ToolWindowFactory, DumbAware {
@@ -18,8 +21,8 @@ class MyToolWindowFactory : ToolWindowFactory, DumbAware {
                 isCloseable = false
                 setDisposer(Disposer.newDisposable("AI Doc Writer tab disposable"))
             }.also {
-                it.putUserData(GHPRToolWindowTabController.KEY,
-                            GHPRToolWindowTabControllerImpl(project, authManager, repositoryManager, dataContextRepository, projectString, it))
+                it.putUserData(MintlifyToolWindowTabController.KEY,
+                            MintlifyToolWindowTabControllerImpl(project, it))
             })
         }
     }
