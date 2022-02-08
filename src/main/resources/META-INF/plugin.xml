@@ -9,7 +9,7 @@
     <extensions defaultExtensionNs="com.intellij">
         <applicationService serviceImplementation="com.mintlify.document.services.MyApplicationService"/>
         <projectService serviceImplementation="com.mintlify.document.services.MyProjectService"/>
-        <toolWindow id="AI Doc Writer" icon="AllIcons.General.Modified" anchor="right"
+        <toolWindow id="AI Doc Writer" anchor="right"
                     factoryClass="com.mintlify.document.ui.MyToolWindowFactory"/>
     </extensions>
 
@@ -29,14 +29,6 @@
             <override-text place="MainMenu" text="Pop Dialog Action"/>
             <keyboard-shortcut first-keystroke="control shift PERIOD" keymap="$default"/>
         </action>
-
-        <group id="com.mintlify.document.TreeFilters.ScanType">
-            <action id="com.mintlify.document.ui.actions.SnykTreeScanTypeFilterAction"
-                    class="com.mintlify.document.ui.actions.SnykTreeScanTypeFilterAction"
-                    text="Scan For Issue Types:"
-                    description="Snyk: Choose Scan types to run/display"
-                    icon="AllIcons.General.Filter"/>
-        </group>
     </actions>
     
 </idea-plugin>
