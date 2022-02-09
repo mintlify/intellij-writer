@@ -5,6 +5,8 @@ import com.intellij.openapi.util.Key
 
 interface MintlifyToolWindowTabController {
 
+  val componentController: MintlifyToolWindowTabComponentController?
+
   companion object {
     val KEY = Key.create<MintlifyToolWindowTabController>("Mintlify.Document.ToolWindow.Tab.Controller")
   }

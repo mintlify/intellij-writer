@@ -25,6 +25,15 @@ internal class MintlifyToolWindowTabControllerImpl(private val project: Project,
 
   private var showingSelectors: Boolean? = null
 
+  override val componentController: MintlifyToolWindowTabComponentController?
+    get() {
+      for (component in mainPanel.components) {
+        val controller = UIUtil.getClientProperty(component, MintlifyToolWindowTabComponentController.KEY)
+        if (controller != null) return controller
+      }
+      return null
+    }
+
   init {
     showSelectors()
   }
@@ -45,5 +54,18 @@ internal class MintlifyToolWindowTabControllerImpl(private val project: Project,
       repaint()
     }
     showingSelectors = true
+  }
+
+
+  private fun showComponent() {
+    tab.displayName = GithubBundle.message("toolwindow.AI_Doc_Writer")
+
+    val disposable = Disposer.newDisposable()
+    val panel = JPanel(null).apply {
+      isOpaque = false
+    }
+    contentDisposable = Disposable {
+      Disposer.dispose(disposable)
+    }
   }
 }
