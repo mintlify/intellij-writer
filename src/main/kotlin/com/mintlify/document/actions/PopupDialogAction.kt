@@ -14,6 +14,7 @@ import com.intellij.openapi.progress.ProgressManager
 import com.intellij.openapi.progress.Task
 
 import com.mintlify.document.helpers.getDocFromApi
+import java.awt.event.ActionEvent
 
 public class PopupDialogAction : AnAction() {
     override fun actionPerformed(e: AnActionEvent) {
@@ -54,6 +55,8 @@ public class PopupDialogAction : AnAction() {
         ProgressManager.getInstance().run(task)
     }
 }
+
+
 
 fun getWhitespaceSpaceBefore(text: String): String {
     val frontWhiteSpaceRemoved = text.trimStart()

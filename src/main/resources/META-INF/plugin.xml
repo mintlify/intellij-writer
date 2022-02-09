@@ -9,6 +9,8 @@
     <extensions defaultExtensionNs="com.intellij">
         <applicationService serviceImplementation="com.mintlify.document.services.MyApplicationService"/>
         <projectService serviceImplementation="com.mintlify.document.services.MyProjectService"/>
+        <toolWindow id="AI Doc Writer" secondary="true" icon="AllIcons.General.Modified" anchor="right"
+                factoryClass="com.mintlify.document.ui.MyToolWindowFactory"/>
     </extensions>
 
     <applicationListeners>
