@@ -23,12 +23,6 @@ public class MyToolWindow {
   private JButton generateDocsButton;
 
   public MyToolWindow(ToolWindow toolWindow, Project project) {
-    Module @NotNull [] modules = ModuleManager.getInstance(project).getModules();
-    System.out.println(modules.length);
-    for (int i=0; i< modules.length; i++) {
-      System.out.println(i);
-      System.out.println(modules[i]);
-    }
     docFormatSelector.setEditable(false);
     docFormatSelector.addItem("Auto-detect");
     docFormatSelector.addItem("Javadoc");
