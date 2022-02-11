@@ -8,6 +8,7 @@ import com.intellij.openapi.command.WriteCommandAction
 import com.intellij.openapi.editor.CaretModel
 import com.intellij.openapi.editor.Editor
 import com.intellij.openapi.editor.Document
+import com.intellij.openapi.fileEditor.FileEditorManager
 import com.intellij.openapi.progress.ProgressIndicator
 import com.intellij.openapi.project.Project
 import com.intellij.openapi.progress.ProgressManager
@@ -18,9 +19,9 @@ import java.awt.event.ActionEvent
 
 public class PopupDialogAction : AnAction() {
     override fun actionPerformed(e: AnActionEvent) {
-        val editor: Editor = e.getRequiredData(CommonDataKeys.EDITOR)
         val project: Project = e.getRequiredData(CommonDataKeys.PROJECT)
-        val document: Document = editor.document
+        val editor: Editor = FileEditorManager.getInstance(project).selectedTextEditor!!
+        val document: Document = editor?.document
 
         val task = object : Task.Backgroundable(project, "AI doc writer progress") {
             override fun run(indicator: ProgressIndicator) {
@@ -39,7 +40,8 @@ public class PopupDialogAction : AnAction() {
 
                 val languageId = e.getData(LangDataKeys.PSI_FILE)?.language?.displayName?.lowercase()
                 val width = editor.settings.getRightMargin(project) - whitespaceBeforeLine.length
-                val response = getDocFromApi(selectedText, "testingID", languageId, documentText, width)
+                val response = getDocFromApi(code = selectedText, userId = "testingID", languageId = languageId,
+                    context = documentText, width = width, commented = true)
                 indicator.fraction = 1.0
                 if (response != null) {
                     val isBelowStartLine = response.position === "belowStartLine";
