@@ -21,7 +21,7 @@ public class PopupDialogAction : AnAction() {
     override fun actionPerformed(e: AnActionEvent) {
         val project: Project = e.getRequiredData(CommonDataKeys.PROJECT)
         val editor: Editor = FileEditorManager.getInstance(project).selectedTextEditor!!
-        val document: Document = editor?.document
+        val document: Document = editor.document
 
         val task = object : Task.Backgroundable(project, "AI doc writer progress") {
             override fun run(indicator: ProgressIndicator) {
@@ -33,12 +33,11 @@ public class PopupDialogAction : AnAction() {
                 val selectionStart = caretModel.currentCaret.selectionStart
                 val documentText = document.text
                 val start = documentText.indexOf(selectedText, selectionStart)
-
                 // Get space before start line
                 val startLineNumber = document.getLineNumber(start)
                 var whitespaceBeforeLine = getWhitespaceOfLineAtOffset(document, startLineNumber)
-
-                val languageId = e.getData(LangDataKeys.PSI_FILE)?.language?.displayName?.lowercase()
+                val selectedFile = FileEditorManager.getInstance(project).selectedFiles[0]
+                val languageId = selectedFile.fileType.displayName.lowercase()
                 val width = editor.settings.getRightMargin(project) - whitespaceBeforeLine.length
                 val response = getDocFromApi(code = selectedText, userId = "testingID", languageId = languageId,
                     context = documentText, width = width, commented = true)
