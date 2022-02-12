@@ -69,7 +69,6 @@ fun getWhitespaceSpaceBefore(text: String): String {
 
 fun getWhitespaceOfLineAtOffset(document: Document, lineNumber: Int): String {
     val documentText = document.text
-
     val startLineStartOffset = document.getLineStartOffset(lineNumber)
     val startLineEndOffset = document.getLineEndOffset(lineNumber)
     val startLine = documentText.substring(startLineStartOffset, startLineEndOffset)
