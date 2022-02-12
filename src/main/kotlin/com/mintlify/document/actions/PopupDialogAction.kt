@@ -23,7 +23,7 @@ public class PopupDialogAction : AnAction() {
         val document: Document = editor.document
 
         val myToolWindow = MyToolWindowFactory.getMyToolWindow(project)
-        val selectedDocFormat = myToolWindow.selectedDocFormat ?: "Auto-detect"
+        val selectedDocFormat = myToolWindow?.selectedDocFormat ?: "Auto-detect"
         print("selectedDocFormat: $selectedDocFormat")
 
         val task = object : Task.Backgroundable(project, "AI doc writer progress") {
