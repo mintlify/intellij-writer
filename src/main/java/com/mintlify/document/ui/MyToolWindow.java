@@ -4,12 +4,11 @@ import com.intellij.openapi.actionSystem.ActionManager;
 import com.intellij.openapi.actionSystem.AnAction;
 import com.intellij.openapi.actionSystem.ex.ActionUtil;
 import com.intellij.openapi.actionSystem.ActionPlaces;
-import com.intellij.openapi.module.Module;
-import com.intellij.openapi.module.ModuleManager;
-import com.intellij.openapi.project.Project;
+
+import com.intellij.openapi.ui.ComboBox;
 import com.intellij.openapi.wm.ToolWindow;
 
-import org.jetbrains.annotations.NotNull;
+
 
 import javax.swing.*;
 import java.awt.*;
@@ -22,10 +21,15 @@ public class MyToolWindow {
   private JComboBox<String> docFormatSelector;
   private JButton generateDocsButton;
 
-  public MyToolWindow(ToolWindow toolWindow, Project project) {
-    docFormatSelector.setEditable(false);
+  public MyToolWindow(ToolWindow toolWindow) {
     docFormatSelector.addItem("Auto-detect");
     docFormatSelector.addItem("Javadoc");
+    docFormatSelector.addItem("Google");
+    docFormatSelector.addItem("JSDoc");
+    docFormatSelector.addItem("reST");
+    docFormatSelector.addItem("DocBlock");
+
+    docFormatSelector.setEditable(false);
     generateDocsButton.addActionListener(new ActionListener() {
       @Override
       public void actionPerformed(ActionEvent e) {
@@ -34,6 +38,9 @@ public class MyToolWindow {
         ActionUtil.invokeAction(action, toolWindow.getComponent(), ActionPlaces.TOOLWINDOW_CONTENT, null, null);
       }
     });
+  }
+  public String getSelectedDocFormat() {
+    return (String) docFormatSelector.getSelectedItem();
   }
 
   public JPanel getContent() {

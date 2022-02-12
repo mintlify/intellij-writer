@@ -3,7 +3,6 @@ package com.mintlify.document.actions
 import com.intellij.openapi.actionSystem.AnAction
 import com.intellij.openapi.actionSystem.AnActionEvent
 import com.intellij.openapi.actionSystem.CommonDataKeys
-import com.intellij.openapi.actionSystem.LangDataKeys
 import com.intellij.openapi.command.WriteCommandAction
 import com.intellij.openapi.editor.CaretModel
 import com.intellij.openapi.editor.Editor
@@ -15,13 +14,17 @@ import com.intellij.openapi.progress.ProgressManager
 import com.intellij.openapi.progress.Task
 
 import com.mintlify.document.helpers.getDocFromApi
-import java.awt.event.ActionEvent
+import com.mintlify.document.ui.MyToolWindowFactory
 
 public class PopupDialogAction : AnAction() {
     override fun actionPerformed(e: AnActionEvent) {
         val project: Project = e.getRequiredData(CommonDataKeys.PROJECT)
         val editor: Editor = FileEditorManager.getInstance(project).selectedTextEditor!!
         val document: Document = editor.document
+
+        val myToolWindow = MyToolWindowFactory.getMyToolWindow(project)
+        val selectedDocFormat = myToolWindow.selectedDocFormat ?: "Auto-detect"
+        print("selectedDocFormat: $selectedDocFormat")
 
         val task = object : Task.Backgroundable(project, "AI doc writer progress") {
             override fun run(indicator: ProgressIndicator) {
@@ -40,7 +43,7 @@ public class PopupDialogAction : AnAction() {
                 val languageId = selectedFile.fileType.displayName.lowercase()
                 val width = editor.settings.getRightMargin(project) - whitespaceBeforeLine.length
                 val response = getDocFromApi(code = selectedText, userId = "testingID", languageId = languageId,
-                    context = documentText, width = width, commented = true)
+                    context = documentText, width = width, commented = true, docStyle = selectedDocFormat)
                 indicator.fraction = 1.0
                 if (response != null) {
                     val isBelowStartLine = response.position === "belowStartLine";
