@@ -27,6 +27,7 @@ public class MyToolWindow {
     docFormatSelector.addItem("Google");
     docFormatSelector.addItem("JSDoc");
     docFormatSelector.addItem("reST");
+    docFormatSelector.addItem("NumPy");
     docFormatSelector.addItem("DocBlock");
 
     docFormatSelector.setEditable(false);
