@@ -24,13 +24,12 @@ public class PopupDialogAction : AnAction() {
 
         val myToolWindow = MyToolWindowFactory.getMyToolWindow(project)
         val selectedDocFormat = myToolWindow?.selectedDocFormat ?: "Auto-detect"
-        print("selectedDocFormat: $selectedDocFormat")
 
         val task = object : Task.Backgroundable(project, "AI doc writer progress") {
             override fun run(indicator: ProgressIndicator) {
                 indicator.text = "Generating docs"
                 // TODO: Update with moving progress bar
-                indicator.fraction = 0.8
+                indicator.fraction = 1.0
                 val caretModel: CaretModel = editor.caretModel
                 val selectedText = caretModel.currentCaret.selectedText?.trim() ?: ""
                 val selectionStart = caretModel.currentCaret.selectionStart
@@ -38,15 +37,15 @@ public class PopupDialogAction : AnAction() {
                 val start = documentText.indexOf(selectedText, selectionStart)
                 // Get space before start line
                 val startLineNumber = document.getLineNumber(start)
-                var whitespaceBeforeLine = getWhitespaceOfLineAtOffset(document, startLineNumber)
+                val whitespaceBeforeLine = getWhitespaceOfLineAtOffset(document, startLineNumber)
                 val selectedFile = FileEditorManager.getInstance(project).selectedFiles[0]
                 val languageId = selectedFile.fileType.displayName.lowercase()
                 val width = editor.settings.getRightMargin(project) - whitespaceBeforeLine.length
-                val response = getDocFromApi(code = selectedText, userId = "testingID", languageId = languageId,
+
+                val response = getDocFromApi(code = selectedText, languageId = languageId,
                     context = documentText, width = width, commented = true, docStyle = selectedDocFormat)
-                indicator.fraction = 1.0
                 if (response != null) {
-                    val isBelowStartLine = response.position === "belowStartLine";
+                    val isBelowStartLine = response.position === "belowStartLine"
                     val insertPosition = if (isBelowStartLine) document.getLineStartOffset(startLineNumber + 1) else start
                     val insertDoc = getFormattedInsertDoc(response.docstring, whitespaceBeforeLine, isBelowStartLine)
 
