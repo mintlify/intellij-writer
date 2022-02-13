@@ -40,7 +40,7 @@
             <h1>How to generate documentation</h1>
             <b>Step 1</b> Highlight code or place cursor on the line you want to document 
             <b>Step 2</b> Click on the Write Docs button (or hit ⌘⇧.)
-            <h1>📝 Languages supported</h1>
+            <h1>Languages supported</h1>
             <ul>
                 <li>Python</li>
                 <li>JavaScript</li>
@@ -48,9 +48,10 @@
                 <li>JSX and TSX</li>
                 <li>PHP</li>
                 <li>Java</li>
-                <li>🚧 More under construction</li>
+                <li>Kotlin</li>
+                <li>More under construction...</li>
             </ul>
-            <h1>📑 Docstring formats supported</h1>
+            <h1>Docstring formats supported</h1>
             <ul>
                 <li>JSDoc</li>
                 <li>reST</li>
@@ -58,9 +59,9 @@
                 <li>DocBlock</li>
                 <li>Javadoc</li>
                 <li>Google</li>
-                <li>🚧 More under construction</li>
+                <li>More under construction...</li>
             </ul>
-            <br/> <br/>
+            <br/><br/>
             <h1>More Information</h1>
             <a href="https://www.mintlify.com/">Website</a> | <a href="https://twitter.com/mintlify">Twitter</a> | <a href="https://discord.gg/6W7GuYuxra">Discord</a> | <a href="https://github.com/mintlify/intellij-docs">GitHub</a>
             <i>Built with 💚 by the Mintlify team</i>
