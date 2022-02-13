@@ -16,7 +16,9 @@ data class RequestBody(
     var email: String,
     var docStyle: String,
     var source: String,
-    // TODO: Add location
+    // For no-selection
+    var location: Int,
+    var line: String,
 )
 
 data class Response(
@@ -32,11 +34,20 @@ fun getDocFromApi(
     commented: Boolean = true,
     email: String = "",
     docStyle: String = "Auto-detect",
+    location: Int,
+    line: String,
 ): Response? {
     val source = "intellij"
     val userId = System.getProperty("user.name")
-    val body = RequestBody(userId, code, languageId, context, width, commented, email, docStyle, source);
-    val (_, _, result) = "http://localhost:5000/docs/write/v2".httpPost()
+    val body = RequestBody(userId, code, languageId, context, width, commented, email, docStyle, source, location, line);
+
+    val apiBase = "http://localhost:5000/docs/"
+    var endpoint = apiBase + "write/v2"
+    if (code.isEmpty()) {
+        endpoint = apiBase + "write/v2/no-selection"
+    }
+
+    val (_, _, result) = endpoint.httpPost()
         .jsonBody(Gson().toJson(body).toString())
         .responseString()
     val (payload, _) = result
