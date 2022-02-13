@@ -4,7 +4,7 @@ import com.intellij.openapi.actionSystem.AnAction
 import com.intellij.openapi.actionSystem.AnActionEvent
 import com.intellij.openapi.actionSystem.CommonDataKeys
 import com.intellij.openapi.command.WriteCommandAction
-import com.intellij.openapi.editor.CaretModel
+import com.intellij.openapi.editor.Caret
 import com.intellij.openapi.editor.Editor
 import com.intellij.openapi.editor.Document
 import com.intellij.openapi.fileEditor.FileEditorManager
@@ -30,9 +30,9 @@ public class PopupDialogAction : AnAction() {
                 indicator.text = "Generating docs"
                 // TODO: Update with moving progress bar
                 indicator.fraction = 1.0
-                val caretModel: CaretModel = editor.caretModel
-                val selectedText = caretModel.currentCaret.selectedText?.trim() ?: ""
-                val selectionStart = caretModel.currentCaret.selectionStart
+                val currentCaret: Caret = editor.caretModel.currentCaret
+                val selectedText = currentCaret.selectedText?.trim() ?: ""
+                val selectionStart = currentCaret.selectionStart
                 val documentText = document.text
                 val start = documentText.indexOf(selectedText, selectionStart)
                 // Get space before start line
@@ -41,12 +41,25 @@ public class PopupDialogAction : AnAction() {
                 val selectedFile = FileEditorManager.getInstance(project).selectedFiles[0]
                 val languageId = selectedFile.fileType.displayName.lowercase()
                 val width = editor.settings.getRightMargin(project) - whitespaceBeforeLine.length
+                val lineText = getLineText(document, startLineNumber)
 
-                val response = getDocFromApi(code = selectedText, languageId = languageId,
-                    context = documentText, width = width, commented = true, docStyle = selectedDocFormat)
+                val response = getDocFromApi(
+                    code = selectedText,
+                    languageId = languageId,
+                    context = documentText,
+                    width = width,
+                    commented = true,
+                    docStyle = selectedDocFormat,
+                    location = selectionStart,
+                    line = lineText
+                )
                 if (response != null) {
                     val isBelowStartLine = response.position === "belowStartLine"
-                    val insertPosition = if (isBelowStartLine) document.getLineStartOffset(startLineNumber + 1) else start
+                    val insertPosition = if (isBelowStartLine) {
+                        document.getLineStartOffset(startLineNumber + 1)
+                    } else {
+                        document.getLineStartOffset(startLineNumber) + whitespaceBeforeLine.length
+                    }
                     val insertDoc = getFormattedInsertDoc(response.docstring, whitespaceBeforeLine, isBelowStartLine)
 
                     WriteCommandAction.runWriteCommandAction(project) {
@@ -59,19 +72,21 @@ public class PopupDialogAction : AnAction() {
     }
 }
 
-
-
 fun getWhitespaceSpaceBefore(text: String): String {
     val frontWhiteSpaceRemoved = text.trimStart()
     val firstNoneWhiteSpaceIndex = text.indexOf(frontWhiteSpaceRemoved)
     return text.substring(0, firstNoneWhiteSpaceIndex)
 }
 
-fun getWhitespaceOfLineAtOffset(document: Document, lineNumber: Int): String {
+fun getLineText(document: Document, lineNumber: Int): String {
     val documentText = document.text
     val startLineStartOffset = document.getLineStartOffset(lineNumber)
     val startLineEndOffset = document.getLineEndOffset(lineNumber)
-    val startLine = documentText.substring(startLineStartOffset, startLineEndOffset)
+    return documentText.substring(startLineStartOffset, startLineEndOffset)
+}
+
+fun getWhitespaceOfLineAtOffset(document: Document, lineNumber: Int): String {
+    val startLine = getLineText(document, lineNumber)
     return getWhitespaceSpaceBefore(startLine)
 }
 
