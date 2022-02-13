@@ -35,8 +35,9 @@
     <description>
         <![CDATA[
             Generate docstrings using AI<br/><br/>
-            Writing documentation sucks. Let Mintlify take care of it. Just hightlight code and see the magic.
-            <h1>👩‍💻 How to generate documentation</h1>
+            <img src="https://raw.githubusercontent.com/mintlify/intellij-docs/main/assets/intellij-demo.gif" border="0" width="700" />
+            Writing documentation sucks. Let Mintlify take care of it. Just highlight code and see the magic.
+            <h1>How to generate documentation</h1>
             <b>Step 1</b> Highlight code or place cursor on the line you want to document 
             <b>Step 2</b> Click on the Write Docs button (or hit ⌘⇧.)
             <h1>📝 Languages supported</h1>
