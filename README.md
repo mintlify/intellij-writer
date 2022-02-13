@@ -4,29 +4,31 @@
 [![Version](https://img.shields.io/jetbrains/plugin/v/PLUGIN_ID.svg)](https://plugins.jetbrains.com/plugin/com.mintlify.document)
 [![Downloads](https://img.shields.io/jetbrains/plugin/d/PLUGIN_ID.svg)](https://plugins.jetbrains.com/plugin/com.mintlify.document)
 
+<img src="assets/intellij-demo.gif" width="100%" />
+
 <!-- Plugin description -->
 
-Generate docstrings using AI.
-
-<img src="https://raw.githubusercontent.com/mintlify/intellij-docs/main/assets/intellij-demo.gif" width="700" />
+### Generate documentation using AI
 
 Writing documentation sucks. Let Mintlify take care of it. Just highlight code and see the magic.
-### 👩‍💻 How to generate documentation
+
+### How to use
 
 **Step 1** Highlight code or place cursor on the line you want to document
+
 **Step 2** Click on the `Write Docs` button (or hit ⌘ + .)
 
-### 📝 Languages supported
+### Languages supported
 
 - Python
 - JavaScript
 - TypeScript
 - JSX and TSX files
 - PHP
-- Java
-- 🚧 More under construction
+- Java 
+- More under construction
 
-### 📑 Docstring formats supported
+### Docstring formats supported
 
 - JSDoc
 - reST
@@ -34,7 +36,7 @@ Writing documentation sucks. Let Mintlify take care of it. Just highlight code a
 - DocBlock
 - Javadoc
 - Google
-- 🚧 More under construction
+- More under construction
 <!-- Plugin description end -->
 
 ---

@@ -34,8 +34,9 @@
     </actions>
     <description>
         <![CDATA[
-            Generate docstrings using AI<br/><br/>
-            <img src="https://raw.githubusercontent.com/mintlify/intellij-docs/main/assets/intellij-demo.gif" border="0" width="700" />
+            <h1>Generate documentation using AI</h1>
+            <br/>
+            <br/>
             Writing documentation sucks. Let Mintlify take care of it. Just highlight code and see the magic.
             <h1>How to generate documentation</h1>
             <b>Step 1</b> Highlight code or place cursor on the line you want to document 
@@ -61,7 +62,8 @@
                 <li>Google</li>
                 <li>More under construction...</li>
             </ul>
-            <br/><br/>
+            <br/>
+            <br/>
             <h1>More Information</h1>
             <a href="https://www.mintlify.com/">Website</a> | <a href="https://twitter.com/mintlify">Twitter</a> | <a href="https://discord.gg/6W7GuYuxra">Discord</a> | <a href="https://github.com/mintlify/intellij-docs">GitHub</a>
             <i>Built with 💚 by the Mintlify team</i>
