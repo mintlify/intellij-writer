@@ -8,6 +8,8 @@
 
 Writing documentation sucks. Let Mintlify take care of it. Just hightlight code and see the magic.
 
+![Demo](/assets/intellij-demo.gif)
+
 ### 👩‍💻 How to generate documentation
 
 **Step 1** Highlight code or place cursor on the line you want to document
