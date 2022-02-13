@@ -8,10 +8,9 @@
 
 Generate docstrings using AI.
 
-Writing documentation sucks. Let Mintlify take care of it. Just hightlight code and see the magic.
+<img src="https://raw.githubusercontent.com/mintlify/intellij-docs/main/assets/intellij-demo.gif" width="700" />
 
-![Demo](/assets/intellij-demo.gif)
-
+Writing documentation sucks. Let Mintlify take care of it. Just highlight code and see the magic.
 ### 👩‍💻 How to generate documentation
 
 **Step 1** Highlight code or place cursor on the line you want to document
