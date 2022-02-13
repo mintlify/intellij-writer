@@ -6,6 +6,8 @@
 
 <!-- Plugin description -->
 
+Generate docstrings using AI.
+
 Writing documentation sucks. Let Mintlify take care of it. Just hightlight code and see the magic.
 
 ![Demo](/assets/intellij-demo.gif)
