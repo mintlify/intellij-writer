@@ -2,7 +2,7 @@
 <idea-plugin>
     <id>com.mintlify.document</id>
     <name>AI Doc Writer</name>
-    <version>1.0.1</version>
+    <version>1.0.2</version>
     <vendor url="https://www.mintlify.com/" email="hi@mintlify.com">Mintlify</vendor>
     
 
