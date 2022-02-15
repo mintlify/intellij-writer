@@ -4,6 +4,7 @@
 
 ## [Unreleased]
 
-## [1.0.0]
-Update for initial marketplace publishing
+## [1.0.4]
+Revert back buildUntil
 
+## [1.0.0]
