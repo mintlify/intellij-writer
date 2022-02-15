@@ -4,6 +4,7 @@
 
 ## [Unreleased]
 
-## [1.0.0]
-Update for initial marketplace publishing
+## [1.0.6]
+Add untilBuild for experimental build 221
 
+## [1.0.0]
