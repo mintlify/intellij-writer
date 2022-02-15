@@ -39,7 +39,7 @@ public class PopupDialogAction : AnAction() {
                 val startLineNumber = document.getLineNumber(start)
                 val whitespaceBeforeLine = getWhitespaceOfLineAtOffset(document, startLineNumber)
                 val selectedFile = FileEditorManager.getInstance(project).selectedFiles[0]
-                val languageId = selectedFile.fileType.displayName.lowercase()
+                val languageId = if (selectedFile.extension == "py") "python" else selectedFile.fileType.displayName.lowercase()
                 val width = editor.settings.getRightMargin(project) - whitespaceBeforeLine.length
                 val lineText = getLineText(document, startLineNumber)
 
@@ -54,7 +54,7 @@ public class PopupDialogAction : AnAction() {
                     line = lineText
                 )
                 if (response != null) {
-                    val isBelowStartLine = response.position === "belowStartLine"
+                    val isBelowStartLine = response.position == "belowStartLine"
                     val insertPosition = if (isBelowStartLine) {
                         document.getLineStartOffset(startLineNumber + 1)
                     } else {

@@ -16,7 +16,7 @@ Writing documentation sucks. Let Mintlify take care of it. Just highlight code a
 
 **Step 1** Highlight code or place cursor on the line you want to document
 
-**Step 2** Click on the `Write Docs` button (or hit ⌘ + .)
+**Step 2** Click on the `Write Docs` button (or hit ⌘⇧.)
 
 ### Languages supported
 
@@ -25,7 +25,7 @@ Writing documentation sucks. Let Mintlify take care of it. Just highlight code a
 - TypeScript
 - JSX and TSX files
 - PHP
-- Java 
+- Java
 - More under construction
 
 ### Docstring formats supported
