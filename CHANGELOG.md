@@ -4,6 +4,7 @@
 
 ## [Unreleased]
 
-## [1.0.0]
-Update for initial marketplace publishing
+## [1.0.5]
+Removed `untilBuild` to see if it opens compatibility
 
+## [1.0.0]
