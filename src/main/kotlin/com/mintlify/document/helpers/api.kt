@@ -4,7 +4,6 @@ import com.github.kittinunf.fuel.core.extensions.jsonBody
 import com.github.kittinunf.fuel.httpPost
 import com.google.gson.Gson
 import com.beust.klaxon.Klaxon
-import com.intellij.util.SystemProperties
 
 data class RequestBody(
     var userId: String,
@@ -41,7 +40,7 @@ fun getDocFromApi(
     val userId = System.getProperty("user.name")
     val body = RequestBody(userId, code, languageId, context, width, commented, email, docStyle, source, location, line);
 
-    val apiBase = "http://localhost:5000/docs/"
+    val apiBase = "https://api.mintlify.com/docs/"
     var endpoint = apiBase + "write/v2"
     if (code.isEmpty()) {
         endpoint = apiBase + "write/v2/no-selection"

@@ -18,6 +18,7 @@ import com.mintlify.document.ui.MyToolWindowFactory
 
 public class PopupDialogAction : AnAction() {
     override fun actionPerformed(e: AnActionEvent) {
+
         val project: Project = e.getRequiredData(CommonDataKeys.PROJECT)
         val editor: Editor = FileEditorManager.getInstance(project).selectedTextEditor!!
         val document: Document = editor.document
@@ -25,24 +26,23 @@ public class PopupDialogAction : AnAction() {
         val myToolWindow = MyToolWindowFactory.getMyToolWindow(project)
         val selectedDocFormat = myToolWindow?.selectedDocFormat ?: "Auto-detect"
 
+        val currentCaret: Caret = editor.caretModel.currentCaret
+        val selectedText = currentCaret.selectedText?.trim() ?: ""
+        val selectionStart = currentCaret.selectionStart
+        val documentText = document.text
+        val start = documentText.indexOf(selectedText, selectionStart)
+        // Get space before start line
+        val startLineNumber = document.getLineNumber(start)
+        val whitespaceBeforeLine = getWhitespaceOfLineAtOffset(document, startLineNumber)
+        val selectedFile = FileEditorManager.getInstance(project).selectedFiles[0]
+        val languageId = if (selectedFile.extension == "py") "python" else selectedFile.fileType.displayName.lowercase()
+        val width = editor.settings.getRightMargin(project) - whitespaceBeforeLine.length
+        val lineText = getLineText(document, startLineNumber)
+
         val task = object : Task.Backgroundable(project, "AI doc writer progress") {
             override fun run(indicator: ProgressIndicator) {
                 indicator.text = "Generating docs"
-                // TODO: Update with moving progress bar
-                indicator.fraction = 1.0
-                val currentCaret: Caret = editor.caretModel.currentCaret
-                val selectedText = currentCaret.selectedText?.trim() ?: ""
-                val selectionStart = currentCaret.selectionStart
-                val documentText = document.text
-                val start = documentText.indexOf(selectedText, selectionStart)
-                // Get space before start line
-                val startLineNumber = document.getLineNumber(start)
-                val whitespaceBeforeLine = getWhitespaceOfLineAtOffset(document, startLineNumber)
-                val selectedFile = FileEditorManager.getInstance(project).selectedFiles[0]
-                val languageId = if (selectedFile.extension == "py") "python" else selectedFile.fileType.displayName.lowercase()
-                val width = editor.settings.getRightMargin(project) - whitespaceBeforeLine.length
-                val lineText = getLineText(document, startLineNumber)
-
+                indicator.isIndeterminate = true
                 val response = getDocFromApi(
                     code = selectedText,
                     languageId = languageId,
