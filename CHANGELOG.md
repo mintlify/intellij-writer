@@ -4,6 +4,7 @@
 
 ## [Unreleased]
 
-## [1.0.0]
-Update for initial marketplace publishing
+## [1.0.7]
+Updated the description, particularly the tagline, of the plugin
 
+## [1.0.0]
