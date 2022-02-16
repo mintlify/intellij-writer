@@ -1,8 +1,8 @@
 # ✍️ AI Doc Writer - ⌘⇧.
 
 ![Build](https://github.com/mintlify/ai_doc_writer_plugin/workflows/Build/badge.svg)
-[![Version](https://img.shields.io/jetbrains/plugin/v/PLUGIN_ID.svg)](https://plugins.jetbrains.com/plugin/com.mintlify.document)
-[![Downloads](https://img.shields.io/jetbrains/plugin/d/PLUGIN_ID.svg)](https://plugins.jetbrains.com/plugin/com.mintlify.document)
+[![Version](https://img.shields.io/jetbrains/plugin/v/18606-ai-doc-writer.svg)](https://plugins.jetbrains.com/plugin/18606-ai-doc-writer)
+[![Downloads](https://img.shields.io/jetbrains/plugin/d/18606-ai-doc-writer.svg)](https://plugins.jetbrains.com/plugin/18606-ai-doc-writer)
 
 <img src="assets/intellij-demo.gif" width="100%" />
 
