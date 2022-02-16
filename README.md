@@ -8,7 +8,7 @@
 
 <!-- Plugin description -->
 
-### Generate documentation using AI
+### The AI powered documentation writer.
 
 Writing documentation sucks. Let Mintlify take care of it. Just highlight code and see the magic.
 

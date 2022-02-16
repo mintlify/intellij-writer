@@ -2,7 +2,7 @@
 <idea-plugin>
     <id>com.mintlify.document</id>
     <name>AI Doc Writer</name>
-    <version>1.0.6</version>
+    <version>1.0.7</version>
     <vendor url="https://www.mintlify.com/" email="hi@mintlify.com">Mintlify</vendor>
     
 
@@ -34,7 +34,7 @@
     </actions>
     <description>
         <![CDATA[
-            <h1>Generate documentation using AI</h1>
+            <h1>The AI powered documentation writer.</h1>
             <br/>
             <br/>
             Writing documentation sucks. Let Mintlify take care of it. Just highlight code and see the magic.
