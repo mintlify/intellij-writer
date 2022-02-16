@@ -4,6 +4,7 @@
 
 ## [Unreleased]
 
-## [1.0.0]
-Update for initial marketplace publishing
+## [1.0.8]
+Update tagline
 
+## [1.0.0]
