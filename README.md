@@ -10,7 +10,7 @@
 
 ### The AI powered documentation writer.
 
-Writing documentation sucks. Let Mintlify take care of it. Just highlight code and see the magic.
+Just highlight code and see the magic. Writing documentation sucks so let Mintlify take care of it.
 
 ### How to use
 
