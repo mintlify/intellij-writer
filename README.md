@@ -20,7 +20,7 @@ Just highlight code and see the magic. Writing documentation sucks so let Mintli
 
 ### 🚨 Disclaimer
 
-We never store your code, but your code does leave your machine. If this is a concern to you, then please set up [a call](https://savvycal.com/mintlify/enterprise-help) with us to discuss how we can help you.
+We never store your code, but your code does leave your machine. If this is a concern to you, then please set up [a call](https://savvycal.com/mintlify/enterprise-help) with us to discuss how you can locally host.
 
 ### Languages supported
 
