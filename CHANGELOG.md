@@ -4,6 +4,7 @@
 
 ## [Unreleased]
 
-## [1.0.0]
-Update for initial marketplace publishing
+## [1.0.10]
+Add community invite and update button colours
 
+## [1.0.0]
