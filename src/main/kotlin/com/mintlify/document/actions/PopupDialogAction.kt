@@ -38,6 +38,8 @@ public class PopupDialogAction : AnAction() {
         val languageId = if (selectedFile.extension == "py") "python" else selectedFile.fileType.displayName.lowercase()
         val width = editor.settings.getRightMargin(project) - whitespaceBeforeLine.length
         val lineText = getLineText(document, startLineNumber)
+        // Get indent size
+        val tabSize = editor.settings.getTabSize(project)
 
         val task = object : Task.Backgroundable(project, "AI doc writer progress") {
             override fun run(indicator: ProgressIndicator) {
@@ -60,7 +62,7 @@ public class PopupDialogAction : AnAction() {
                     } else {
                         document.getLineStartOffset(startLineNumber) + whitespaceBeforeLine.length
                     }
-                    val insertDoc = getFormattedInsertDoc(response.docstring, whitespaceBeforeLine, isBelowStartLine)
+                    val insertDoc = getFormattedInsertDoc(response.docstring, whitespaceBeforeLine, isBelowStartLine, tabSize)
 
                     WriteCommandAction.runWriteCommandAction(project) {
                         document.insertString(insertPosition, insertDoc)
@@ -90,12 +92,14 @@ fun getWhitespaceOfLineAtOffset(document: Document, lineNumber: Int): String {
     return getWhitespaceSpaceBefore(startLine)
 }
 
-fun getFormattedInsertDoc(docstring: String, whitespaceBeforeLine: String, isBelowStartLine: Boolean = false): String {
+fun getFormattedInsertDoc(docstring: String, whitespaceBeforeLine: String, isBelowStartLine: Boolean = false, tabSize: Int): String {
     var differingWhitespaceBeforeLine = whitespaceBeforeLine
     var lastLineWhitespace = ""
     // Format for tabbed position
     if (isBelowStartLine) {
-        differingWhitespaceBeforeLine = '\t' + differingWhitespaceBeforeLine
+        val space = " "
+        val tab = space.repeat(tabSize)
+        differingWhitespaceBeforeLine = tab + differingWhitespaceBeforeLine
     } else {
         lastLineWhitespace = differingWhitespaceBeforeLine
     }
