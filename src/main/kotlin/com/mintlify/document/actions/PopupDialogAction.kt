@@ -40,6 +40,7 @@ public class PopupDialogAction : AnAction() {
         val lineText = getLineText(document, startLineNumber)
         // Get indent size
         val tabSize = editor.settings.getTabSize(project)
+        val isUseTabCharacter = editor.settings.isUseTabCharacter(project)
 
         val task = object : Task.Backgroundable(project, "AI doc writer progress") {
             override fun run(indicator: ProgressIndicator) {
@@ -62,7 +63,8 @@ public class PopupDialogAction : AnAction() {
                     } else {
                         document.getLineStartOffset(startLineNumber) + whitespaceBeforeLine.length
                     }
-                    val insertDoc = getFormattedInsertDoc(response.docstring, whitespaceBeforeLine, isBelowStartLine, tabSize)
+                    val insertDoc = getFormattedInsertDoc(response.docstring, whitespaceBeforeLine, isBelowStartLine,
+                        tabSize, isUseTabCharacter)
 
                     WriteCommandAction.runWriteCommandAction(project) {
                         document.insertString(insertPosition, insertDoc)
@@ -92,14 +94,20 @@ fun getWhitespaceOfLineAtOffset(document: Document, lineNumber: Int): String {
     return getWhitespaceSpaceBefore(startLine)
 }
 
-fun getFormattedInsertDoc(docstring: String, whitespaceBeforeLine: String, isBelowStartLine: Boolean = false, tabSize: Int): String {
+fun getFormattedInsertDoc(docstring: String, whitespaceBeforeLine: String,
+                          isBelowStartLine: Boolean = false, tabSize: Int, isUseTabChar: Boolean): String {
     var differingWhitespaceBeforeLine = whitespaceBeforeLine
     var lastLineWhitespace = ""
     // Format for tabbed position
     if (isBelowStartLine) {
-        val space = " "
-        val tab = space.repeat(tabSize)
-        differingWhitespaceBeforeLine = tab + differingWhitespaceBeforeLine
+        var whitespace = buildString {
+            append("\t")
+        }
+        if (!isUseTabChar) {
+            val space = " "
+            whitespace = space.repeat(tabSize)
+        }
+        differingWhitespaceBeforeLine = whitespace + differingWhitespaceBeforeLine
     } else {
         lastLineWhitespace = differingWhitespaceBeforeLine
     }
