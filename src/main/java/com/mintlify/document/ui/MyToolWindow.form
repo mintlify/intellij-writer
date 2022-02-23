@@ -1,9 +1,9 @@
 <?xml version="1.0" encoding="UTF-8"?>
 <form xmlns="http://www.intellij.com/uidesigner/form/" version="1" bind-to-class="com.mintlify.document.ui.MyToolWindow">
-  <grid id="27dc6" binding="myToolWindowContent" layout-manager="GridLayoutManager" row-count="4" column-count="1" same-size-horizontally="false" same-size-vertically="false" hgap="-1" vgap="-1">
+  <grid id="27dc6" binding="myToolWindowContent" layout-manager="GridLayoutManager" row-count="5" column-count="1" same-size-horizontally="false" same-size-vertically="false" hgap="-1" vgap="-1">
     <margin top="10" left="10" bottom="0" right="10"/>
     <constraints>
-      <xy x="20" y="20" width="304" height="133"/>
+      <xy x="20" y="20" width="304" height="188"/>
     </constraints>
     <properties/>
     <border type="none"/>
@@ -13,7 +13,8 @@
           <grid row="2" column="0" row-span="1" col-span="1" vsize-policy="0" hsize-policy="1" anchor="1" fill="1" indent="0" use-parent-layout="false"/>
         </constraints>
         <properties>
-          <text value="✍️ Generate docs (⌘⇧.)"/>
+          <foreground color="-2565928"/>
+          <text value="&lt;HTML&gt;&lt;FONT color=&quot;#18E299&quot;&gt;✍&lt;/FONT&gt; Generate docs (⌘⇧.)&lt;/HTML&gt;"/>
         </properties>
       </component>
       <component id="7ced5" class="javax.swing.JComboBox" binding="docFormatSelector">
@@ -45,6 +46,17 @@
         </constraints>
         <properties>
           <text value="Docstring Format"/>
+        </properties>
+      </component>
+      <component id="3b6f8" class="javax.swing.JButton" binding="joinCommunityLabel">
+        <constraints>
+          <grid row="4" column="0" row-span="1" col-span="1" vsize-policy="0" hsize-policy="3" anchor="0" fill="0" indent="0" use-parent-layout="false"/>
+        </constraints>
+        <properties>
+          <foreground color="-2565928"/>
+          <horizontalTextPosition value="0"/>
+          <text value="&lt;HTML&gt;Have questions? Join our &lt;FONT color=&quot;#18E299&quot;&gt;&lt;U&gt;community&lt;/U&gt;&lt;/FONT&gt;&lt;/HTML&gt;"/>
+          <toolTipText value="Join"/>
         </properties>
       </component>
     </children>

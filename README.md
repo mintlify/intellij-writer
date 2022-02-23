@@ -1,22 +1,26 @@
 # ✍️ AI Doc Writer - ⌘⇧.
 
 ![Build](https://github.com/mintlify/ai_doc_writer_plugin/workflows/Build/badge.svg)
-[![Version](https://img.shields.io/jetbrains/plugin/v/PLUGIN_ID.svg)](https://plugins.jetbrains.com/plugin/com.mintlify.document)
-[![Downloads](https://img.shields.io/jetbrains/plugin/d/PLUGIN_ID.svg)](https://plugins.jetbrains.com/plugin/com.mintlify.document)
+[![Version](https://img.shields.io/jetbrains/plugin/v/18606-ai-doc-writer.svg)](https://plugins.jetbrains.com/plugin/18606-ai-doc-writer)
+[![Downloads](https://img.shields.io/jetbrains/plugin/d/18606-ai-doc-writer.svg)](https://plugins.jetbrains.com/plugin/18606-ai-doc-writer)
 
 <img src="assets/intellij-demo.gif" width="100%" />
 
 <!-- Plugin description -->
 
-### Generate documentation using AI
+### The AI powered documentation writer.
 
-Writing documentation sucks. Let Mintlify take care of it. Just highlight code and see the magic.
+Just highlight code and see the magic. Writing documentation sucks so let Mintlify take care of it.
 
 ### How to use
 
 **Step 1** Highlight code or place cursor on the line you want to document
 
 **Step 2** Click on the `Write Docs` button (or hit ⌘⇧.)
+
+### Disclaimer
+
+We never store your code, but your code does leave your machine. You can learn more about our [security policies](https://www.mintlify.com/security) or set up [a call](https://savvycal.com/mintlify/enterprise-help) with us to discuss how you can locally host.
 
 ### Languages supported
 
