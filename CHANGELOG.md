@@ -2,6 +2,10 @@
 
 # AI Doc Writer Changelog
 
+## [1.0.8]
+
+Update tagline
+
 ## [1.0.7]
 
 Updated the description, particularly the tagline, of the plugin
