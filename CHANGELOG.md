@@ -2,6 +2,10 @@
 
 # AI Doc Writer Changelog
 
+## [1.0.11]
+
+**Full Changelog**: https://github.com/mintlify/intellij-docs/compare/v1.0.10...v1.0.11
+
 ## [1.0.10]
 
 Add community invite and update button colours
