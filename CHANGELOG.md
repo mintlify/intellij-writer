@@ -2,6 +2,10 @@
 
 # AI Doc Writer Changelog
 
+## [1.0.4]
+
+Revert back buildUntil
+
 ## [1.0.3]
 
 Patch includes
