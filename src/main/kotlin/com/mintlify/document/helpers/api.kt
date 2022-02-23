@@ -38,7 +38,7 @@ fun getDocFromApi(
 ): Response? {
     val source = "intellij"
     val userId = System.getProperty("user.name")
-    val body = RequestBody(userId, code, languageId, context, width, commented, email, docStyle, source, location, line);
+    val body = RequestBody(userId, code, languageId, context, width, commented, email, docStyle, source, location, line)
 
     val apiBase = "https://api.mintlify.com/docs/"
     var endpoint = apiBase + "write/v2"
@@ -54,5 +54,5 @@ fun getDocFromApi(
         return Klaxon().parse<Response>(payload)
     }
 
-    return null;
+    return null
 }
