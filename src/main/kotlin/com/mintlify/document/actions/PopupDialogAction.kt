@@ -16,7 +16,7 @@ import com.intellij.openapi.progress.Task
 import com.mintlify.document.helpers.getDocFromApi
 import com.mintlify.document.ui.MyToolWindowFactory
 
-public class PopupDialogAction : AnAction() {
+class PopupDialogAction : AnAction() {
     override fun actionPerformed(e: AnActionEvent) {
 
         val project: Project = e.getRequiredData(CommonDataKeys.PROJECT)
