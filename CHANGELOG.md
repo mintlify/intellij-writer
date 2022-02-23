@@ -2,6 +2,10 @@
 
 # AI Doc Writer Changelog
 
+## [1.0.6]
+
+Add untilBuild for experimental build 221
+
 ## [1.0.5]
 
 Removed `untilBuild` to see if it opens compatibility
