@@ -2,9 +2,29 @@
 
 # AI Doc Writer Changelog
 
-## [Unreleased]
-
 ## [1.0.4]
+
 Revert back buildUntil
 
+## [1.0.3]
+
+Patch includes
+
+- Fix bug with API only calling localhost
+- Fix error message with read command
+- Add progress.isIndeterminate = false
+
+## [1.0.2]
+
+Address bug fix for python
+
+## [1.0.1]
+
+Added
+
+- Support for selection without highlighting
+- Improved marketplace description
+
 ## [1.0.0]
+
+Update for initial marketplace publishing
