@@ -4,6 +4,10 @@
 
 ## [Unreleased]
 
+## [1.0.2]
+
+Address bug fix for python
+
 ## [1.0.1]
 
 Added
