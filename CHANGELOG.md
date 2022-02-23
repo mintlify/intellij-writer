@@ -2,6 +2,10 @@
 
 # AI Doc Writer Changelog
 
+## [1.0.7]
+
+Updated the description, particularly the tagline, of the plugin
+
 ## [1.0.6]
 
 Add untilBuild for experimental build 221
