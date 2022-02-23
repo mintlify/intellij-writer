@@ -10,13 +10,17 @@
 
 ### The AI powered documentation writer.
 
-Writing documentation sucks. Let Mintlify take care of it. Just highlight code and see the magic.
+Just highlight code and see the magic. Writing documentation sucks so let Mintlify take care of it.
 
 ### How to use
 
 **Step 1** Highlight code or place cursor on the line you want to document
 
 **Step 2** Click on the `Write Docs` button (or hit ⌘⇧.)
+
+### Disclaimer
+
+We never store your code, but your code does leave your machine. You can learn more about our [security policies](https://www.mintlify.com/security) or set up [a call](https://savvycal.com/mintlify/enterprise-help) with us to discuss how you can locally host.
 
 ### Languages supported
 
