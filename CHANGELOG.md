@@ -5,6 +5,16 @@
 ## [Unreleased]
 
 ## [1.0.2]
-Add bug fix for python
+
+Address bug fix for python
+
+## [1.0.1]
+
+Added
+
+- Support for selection without highlighting
+- Improved marketplace description
 
 ## [1.0.0]
+
+Update for initial marketplace publishing
