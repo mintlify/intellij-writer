@@ -2,6 +2,10 @@
 
 # AI Doc Writer Changelog
 
+## [1.0.10]
+
+Add community invite and update button colours
+
 ## [1.0.9]
 
 Update description with our security policies
