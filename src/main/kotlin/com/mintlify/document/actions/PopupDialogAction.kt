@@ -12,6 +12,9 @@ import com.intellij.openapi.progress.ProgressIndicator
 import com.intellij.openapi.project.Project
 import com.intellij.openapi.progress.ProgressManager
 import com.intellij.openapi.progress.Task
+import com.intellij.notification.Notification
+import com.intellij.notification.Notifications
+import com.intellij.notification.NotificationType
 
 import com.mintlify.document.helpers.getDocFromApi
 import com.mintlify.document.ui.MyToolWindowFactory
@@ -69,6 +72,14 @@ class PopupDialogAction : AnAction() {
                     WriteCommandAction.runWriteCommandAction(project) {
                         document.insertString(insertPosition, insertDoc)
                     }
+                } else {
+                    val notification = Notification(
+                        "Error Notification",
+                        "Unable to generate docs",
+                        "Please try again later or report the error to hi@mintlify.com",
+                        NotificationType.ERROR
+                    )
+                    Notifications.Bus.notify(notification, project)
                 }
             }
         }
