@@ -64,22 +64,24 @@ fun getDocFromApi(
     val (payload, _) = result
 
     if (payload != null) {
-        val id = Klaxon().parse<WorkerResponse>(payload)?.id ?: return null;
-        var completedResponse: Response? = null;
-        val timeIncrement = 100;
-        var timeElapsedInMs = 0;
+        val id = Klaxon().parse<WorkerResponse>(payload)?.id ?: return null
+        var completedResponse: Response? = null
+        val timeIncrement = 100
+        var timeElapsedInMs = 0
 
         while (completedResponse == null && timeElapsedInMs < 25000) {
-            val (_, _, result) = "$apiBase/worker/$id".httpGet().responseString()
-            val (statusPayload, _) = result
+            val (_, _, resultFromWorker) = "$apiBase/worker/$id".httpGet().responseString()
+            val (statusPayload, _) = resultFromWorker
             if (statusPayload != null) {
-                val status = Klaxon().parse<WorkerStatusResponse>(statusPayload);
-                if (status?.state == "completed" && status?.data != null) {
-                    completedResponse = status.data
+                val status = Klaxon().parse<WorkerStatusResponse>(statusPayload)
+                if (status != null) {
+                    if ((status.state == "completed") && (status.data != null)) {
+                        completedResponse = status.data
+                    }
                 }
             }
-            Thread.sleep(timeIncrement.toLong());
-            timeElapsedInMs += timeIncrement;
+            Thread.sleep(timeIncrement.toLong())
+            timeElapsedInMs += timeIncrement
         }
 
         return completedResponse
