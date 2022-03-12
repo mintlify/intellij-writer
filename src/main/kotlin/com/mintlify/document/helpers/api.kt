@@ -6,6 +6,10 @@ import com.github.kittinunf.fuel.httpGet
 import com.google.gson.Gson
 import com.beust.klaxon.Klaxon
 
+data class Custom(
+    var language: String,
+)
+
 data class RequestBody(
     var userId: String,
     var code: String,
@@ -19,6 +23,7 @@ data class RequestBody(
     // For no-selection
     var location: Int,
     var line: String,
+    var custom: Custom,
 )
 
 data class WorkerResponse(
@@ -47,10 +52,11 @@ fun getDocFromApi(
     docStyle: String = "Auto-detect",
     location: Int,
     line: String,
+    custom: Custom
 ): Response? {
     val source = "intellij"
     val userId = System.getProperty("user.name")
-    val body = RequestBody(userId, code, languageId, context, width, commented, email, docStyle, source, location, line)
+    val body = RequestBody(userId, code, languageId, context, width, commented, email, docStyle, source, location, line, custom)
 
     val apiBase = "https://api.mintlify.com/docs"
     var endpoint = "$apiBase/write/v3"

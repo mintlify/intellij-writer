@@ -18,6 +18,7 @@ import com.intellij.notification.NotificationType
 
 import com.mintlify.document.helpers.getDocFromApi
 import com.mintlify.document.ui.MyToolWindowFactory
+import com.mintlify.document.helpers.Custom
 
 class PopupDialogAction : AnAction() {
     override fun actionPerformed(e: AnActionEvent) {
@@ -28,6 +29,7 @@ class PopupDialogAction : AnAction() {
 
         val myToolWindow = MyToolWindowFactory.getMyToolWindow(project)
         val selectedDocFormat = myToolWindow?.selectedDocFormat ?: "Auto-detect"
+        val selectedLanguage = myToolWindow?.selectedLanguage ?: "English"
 
         val currentCaret: Caret = editor.caretModel.currentCaret
         val selectedText = currentCaret.selectedText?.trim() ?: ""
@@ -45,6 +47,8 @@ class PopupDialogAction : AnAction() {
         val tabSize = editor.settings.getTabSize(project)
         val isUseTabCharacter = editor.settings.isUseTabCharacter(project)
 
+        val custom = Custom(selectedLanguage)
+
         val task = object : Task.Backgroundable(project, "AI doc writer progress") {
             override fun run(indicator: ProgressIndicator) {
                 indicator.text = "Generating docs"
@@ -57,7 +61,8 @@ class PopupDialogAction : AnAction() {
                     commented = true,
                     docStyle = selectedDocFormat,
                     location = selectionStart,
-                    line = lineText
+                    line = lineText,
+                    custom = custom
                 )
                 if (response != null) {
                     val isBelowStartLine = response.position == "belowStartLine"

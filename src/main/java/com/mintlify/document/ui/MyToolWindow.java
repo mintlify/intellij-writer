@@ -21,6 +21,7 @@ public class MyToolWindow {
   private JComboBox<String> docFormatSelector;
   private JButton generateDocsButton;
   private JButton joinCommunityLabel;
+  private JComboBox languageSelector;
 
   public MyToolWindow(ToolWindow toolWindow) {
     docFormatSelector.addItem("Auto-detect");
@@ -41,6 +42,14 @@ public class MyToolWindow {
       }
     });
 
+    languageSelector.addItem("English");
+    languageSelector.addItem("Chinese");
+    languageSelector.addItem("French");
+    languageSelector.addItem("Korean");
+    languageSelector.addItem("Russian");
+    languageSelector.addItem("Spanish");
+
+    languageSelector.setEditable(false);
     try {
       final URI joinDiscordUri = new URI("https://discord.gg/6W7GuYuxra");
       joinCommunityLabel.setBorderPainted(false);
@@ -61,6 +70,10 @@ public class MyToolWindow {
   }
   public String getSelectedDocFormat() {
     return (String) docFormatSelector.getSelectedItem();
+  }
+
+  public String getSelectedLanguage() {
+    return (String) languageSelector.getSelectedItem();
   }
 
   public JPanel getContent() {
