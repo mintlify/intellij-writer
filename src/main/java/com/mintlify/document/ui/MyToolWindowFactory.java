@@ -12,7 +12,7 @@ import org.jetbrains.annotations.NotNull;
 import org.jetbrains.annotations.Nullable;
 
 public class MyToolWindowFactory implements ToolWindowFactory {
-  public static final String ID = "AI Doc Writer";
+  public static final String ID = "Mintlify Doc Writer";
   private static final Key<MyToolWindow> MY_TOOL_WINDOW = Key.create("MyToolWindow");
 
   /**

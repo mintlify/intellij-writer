@@ -49,7 +49,7 @@ class PopupDialogAction : AnAction() {
 
         val custom = Custom(selectedLanguage)
 
-        val task = object : Task.Backgroundable(project, "AI doc writer progress") {
+        val task = object : Task.Backgroundable(project, "Mintlify doc writer progress") {
             override fun run(indicator: ProgressIndicator) {
                 indicator.text = "Generating docs"
                 indicator.isIndeterminate = true

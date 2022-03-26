@@ -1,6 +1,6 @@
 <!-- Keep a Changelog guide -> https://keepachangelog.com -->
 
-# AI Doc Writer Changelog
+# Mintlify Doc Writer Changelog
 
 ## [1.0.11]
 

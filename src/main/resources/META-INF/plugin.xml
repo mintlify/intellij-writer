@@ -1,8 +1,8 @@
 <!-- Plugin Configuration File. Read more: https://plugins.jetbrains.com/docs/intellij/plugin-configuration-file.html -->
 <idea-plugin>
     <id>com.mintlify.document</id>
-    <name>AI Doc Writer</name>
-    <version>1.1.0</version>
+    <name>Mintlify Doc Writer</name>
+    <version>1.1.1</version>
     <vendor url="https://www.mintlify.com/" email="hi@mintlify.com">Mintlify</vendor>
     
 
@@ -11,7 +11,7 @@
     <extensions defaultExtensionNs="com.intellij">
         <applicationService serviceImplementation="com.mintlify.document.services.MyApplicationService"/>
         <projectService serviceImplementation="com.mintlify.document.services.MyProjectService"/>
-        <toolWindow id="AI Doc Writer" icon="/icons/icon.svg" anchor="right"
+        <toolWindow id="Mintlify Doc Writer" icon="/icons/icon.svg" anchor="right"
                 factoryClass="com.mintlify.document.ui.MyToolWindowFactory"/>
     </extensions>
 

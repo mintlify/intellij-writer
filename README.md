@@ -1,4 +1,4 @@
-# ✍️ AI Doc Writer - ⌘⇧.
+# ✍️ Mintlify Doc Writer - ⌘⇧.
 
 ![Build](https://github.com/mintlify/ai_doc_writer_plugin/workflows/Build/badge.svg)
 [![Version](https://img.shields.io/jetbrains/plugin/v/18606-ai-doc-writer.svg)](https://plugins.jetbrains.com/plugin/18606-ai-doc-writer)
@@ -49,7 +49,7 @@ We never store your code, but your code does leave your machine. You can learn m
 
 - Using IDE built-in plugin system:
 
-  <kbd>Settings/Preferences</kbd> > <kbd>Plugins</kbd> > <kbd>Marketplace</kbd> > <kbd>Search for "AI Doc Writer"</kbd> >
+  <kbd>Settings/Preferences</kbd> > <kbd>Plugins</kbd> > <kbd>Marketplace</kbd> > <kbd>Search for "Mintlify Doc Writer"</kbd> >
   <kbd>Install Plugin</kbd>
 
 - Manually:

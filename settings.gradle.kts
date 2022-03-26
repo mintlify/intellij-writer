@@ -1,1 +1,1 @@
-rootProject.name = "AI Doc Writer"
+rootProject.name = "Mintlify Doc Writer"
