@@ -15,7 +15,7 @@ import java.io.IOException;
 import java.net.URI;
 import java.net.URISyntaxException;
 
-public class MyToolWindow {
+public class DocsWindow {
 
   private JPanel myToolWindowContent;
   private JComboBox<String> docFormatSelector;
@@ -23,7 +23,7 @@ public class MyToolWindow {
   private JButton joinCommunityLabel;
   private JComboBox languageSelector;
 
-  public MyToolWindow(ToolWindow toolWindow) {
+  public DocsWindow(ToolWindow toolWindow) {
     docFormatSelector.addItem("Auto-detect");
     docFormatSelector.addItem("Javadoc");
     docFormatSelector.addItem("Google");

@@ -12,7 +12,7 @@
         <applicationService serviceImplementation="com.mintlify.document.services.MyApplicationService"/>
         <projectService serviceImplementation="com.mintlify.document.services.MyProjectService"/>
         <toolWindow id="Mintlify Doc Writer" icon="/icons/icon.svg" anchor="right"
-                factoryClass="com.mintlify.document.ui.MyToolWindowFactory"/>
+                factoryClass="com.mintlify.document.ui.DocsWindowFactory"/>
     </extensions>
 
     <applicationListeners>

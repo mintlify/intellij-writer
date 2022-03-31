@@ -81,7 +81,7 @@ fun getDocFromApi(
             if (statusPayload != null) {
                 val status = Klaxon().parse<WorkerStatusResponse>(statusPayload)
                 if (status != null) {
-                    if ((status.state == "completed") && (status.data != null)) {
+                    if (status.state == "completed" && status.data != null) {
                         completedResponse = status.data
                     }
                 }
@@ -91,7 +91,6 @@ fun getDocFromApi(
         }
 
         return completedResponse
-
     }
 
     return null

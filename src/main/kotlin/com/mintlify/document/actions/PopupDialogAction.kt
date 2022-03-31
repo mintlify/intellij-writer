@@ -17,7 +17,7 @@ import com.intellij.notification.Notifications
 import com.intellij.notification.NotificationType
 
 import com.mintlify.document.helpers.getDocFromApi
-import com.mintlify.document.ui.MyToolWindowFactory
+import com.mintlify.document.ui.DocsWindowFactory
 import com.mintlify.document.helpers.Custom
 
 class PopupDialogAction : AnAction() {
@@ -27,7 +27,7 @@ class PopupDialogAction : AnAction() {
         val editor: Editor = FileEditorManager.getInstance(project).selectedTextEditor!!
         val document: Document = editor.document
 
-        val myToolWindow = MyToolWindowFactory.getMyToolWindow(project)
+        val myToolWindow = DocsWindowFactory.getWindow(project)
         val selectedDocFormat = myToolWindow?.selectedDocFormat ?: "Auto-detect"
         val selectedLanguage = myToolWindow?.selectedLanguage ?: "English"
 

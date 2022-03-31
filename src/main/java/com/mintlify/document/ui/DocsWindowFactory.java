@@ -11,28 +11,22 @@ import com.intellij.ui.content.ContentFactory;
 import org.jetbrains.annotations.NotNull;
 import org.jetbrains.annotations.Nullable;
 
-public class MyToolWindowFactory implements ToolWindowFactory {
+public class DocsWindowFactory implements ToolWindowFactory {
   public static final String ID = "Mintlify Doc Writer";
-  private static final Key<MyToolWindow> MY_TOOL_WINDOW = Key.create("MyToolWindow");
+  private static final Key<DocsWindow> MY_TOOL_WINDOW = Key.create("DocsWindow");
 
-  /**
-   * Create the tool window content.
-   *
-   * @param project    current project
-   * @param toolWindow current tool window
-   */
   public void createToolWindowContent(@NotNull Project project, @NotNull ToolWindow toolWindow) {
-    MyToolWindow myToolWindow = new MyToolWindow(toolWindow);
+    DocsWindow docsWindow = new DocsWindow(toolWindow);
     ContentFactory contentFactory = ContentFactory.SERVICE.getInstance();
-    Content content = contentFactory.createContent(myToolWindow.getContent(), null, false);
-    content.putUserData(MY_TOOL_WINDOW, myToolWindow);
+    Content content = contentFactory.createContent(docsWindow.getContent(), null, false);
+    content.putUserData(MY_TOOL_WINDOW, docsWindow);
     toolWindow.getContentManager().addContent(content);
   }
 
   @Nullable
-  public static MyToolWindow getMyToolWindow(Project project) {
+  public static DocsWindow getWindow(Project project) {
     ToolWindowManager instance = ToolWindowManagerEx.getInstance(project);
-    ToolWindow toolWindow = instance.getToolWindow(MyToolWindowFactory.ID);
+    ToolWindow toolWindow = instance.getToolWindow(DocsWindowFactory.ID);
     if (toolWindow != null) {
       if (!toolWindow.isShowStripeButton()) {
         toolWindow.show();
