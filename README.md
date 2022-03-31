@@ -28,8 +28,10 @@ We never store your code, but your code does leave your machine. You can learn m
 - JavaScript
 - TypeScript
 - JSX and TSX files
+- C and C++
 - PHP
 - Java
+- C#
 - More under construction
 
 ### Docstring formats supported
@@ -38,7 +40,9 @@ We never store your code, but your code does leave your machine. You can learn m
 - reST
 - NumPy
 - DocBlock
+- Doxygen
 - Javadoc
+- XML
 - Google
 - More under construction
 <!-- Plugin description end -->

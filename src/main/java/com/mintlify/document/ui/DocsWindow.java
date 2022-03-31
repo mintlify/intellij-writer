@@ -31,6 +31,8 @@ public class DocsWindow {
     docFormatSelector.addItem("reST");
     docFormatSelector.addItem("NumPy");
     docFormatSelector.addItem("DocBlock");
+    docFormatSelector.addItem("Doxygen");
+    docFormatSelector.addItem("XML");
 
     docFormatSelector.setEditable(false);
     generateDocsButton.addActionListener(new ActionListener() {
