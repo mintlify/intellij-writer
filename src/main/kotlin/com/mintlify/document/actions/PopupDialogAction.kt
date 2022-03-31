@@ -40,7 +40,12 @@ class PopupDialogAction : AnAction() {
         val startLineNumber = document.getLineNumber(start)
         val whitespaceBeforeLine = getWhitespaceOfLineAtOffset(document, startLineNumber)
         val selectedFile = FileEditorManager.getInstance(project).selectedFiles[0]
-        val languageId = if (selectedFile.extension == "py") "python" else selectedFile.fileType.displayName.lowercase()
+        val languageId = when(selectedFile.extension) {
+            "py" -> "python"
+            "c" -> "c"
+            "cpp" -> "cpp"
+            else -> selectedFile.fileType.displayName.lowercase()
+        }
         val width = editor.settings.getRightMargin(project) - whitespaceBeforeLine.length
         val lineText = getLineText(document, startLineNumber)
         // Get indent size
@@ -79,7 +84,7 @@ class PopupDialogAction : AnAction() {
                     }
                 } else {
                     val notification = Notification(
-                        "Error Notification",
+                        "Error",
                         "Unable to generate docs",
                         "Please try again later or report the error to hi@mintlify.com",
                         NotificationType.ERROR
