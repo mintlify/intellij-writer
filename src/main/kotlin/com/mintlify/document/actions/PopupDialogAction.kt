@@ -44,6 +44,7 @@ class PopupDialogAction : AnAction() {
             "py" -> "python"
             "c" -> "c"
             "cpp" -> "cpp"
+            "cs" -> "csharp"
             else -> selectedFile.fileType.displayName.lowercase()
         }
         val width = editor.settings.getRightMargin(project) - whitespaceBeforeLine.length
