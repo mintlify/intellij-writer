@@ -60,7 +60,7 @@ fun getDocFromApi(
     val userId = System.getProperty("user.name")
     val body = RequestBody(userId, code, languageId, fileName, context, width, commented, email, docStyle, source, location, line, custom)
 
-    val apiBase = "http://localhost:5000/docs"
+    val apiBase = "https://api.mintlify.com/docs"
     var endpoint = "$apiBase/write/v3"
     if (code.isEmpty()) {
         endpoint += "/no-selection"

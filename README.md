@@ -32,6 +32,7 @@ We never store your code, but your code does leave your machine. You can learn m
 - PHP
 - Java
 - C#
+- Dart
 - More under construction
 
 ### Docstring formats supported
