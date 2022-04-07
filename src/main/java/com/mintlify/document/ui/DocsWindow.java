@@ -50,6 +50,7 @@ public class DocsWindow {
     languageSelector.addItem("Korean");
     languageSelector.addItem("Russian");
     languageSelector.addItem("Spanish");
+    languageSelector.addItem("Turkish");
 
     languageSelector.setEditable(false);
     try {
