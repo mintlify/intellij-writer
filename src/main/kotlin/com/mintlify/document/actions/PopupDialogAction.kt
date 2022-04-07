@@ -40,13 +40,8 @@ class PopupDialogAction : AnAction() {
         val startLineNumber = document.getLineNumber(start)
         val whitespaceBeforeLine = getWhitespaceOfLineAtOffset(document, startLineNumber)
         val selectedFile = FileEditorManager.getInstance(project).selectedFiles[0]
-        val languageId = when(selectedFile.extension) {
-            "py" -> "python"
-            "c" -> "c"
-            "cpp" -> "cpp"
-            "cs" -> "csharp"
-            else -> selectedFile.fileType.displayName.lowercase()
-        }
+        val languageId = selectedFile.fileType.displayName.lowercase()
+
         val width = editor.settings.getRightMargin(project) - whitespaceBeforeLine.length
         val lineText = getLineText(document, startLineNumber)
         // Get indent size
@@ -62,6 +57,7 @@ class PopupDialogAction : AnAction() {
                 val response = getDocFromApi(
                     code = selectedText,
                     languageId = languageId,
+                    fileName = selectedFile.name,
                     context = documentText,
                     width = width,
                     commented = true,

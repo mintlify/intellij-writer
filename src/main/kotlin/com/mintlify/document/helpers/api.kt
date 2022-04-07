@@ -14,6 +14,7 @@ data class RequestBody(
     var userId: String,
     var code: String,
     var languageId: String?,
+    var fileName: String?,
     var context: String,
     var width: Int,
     var commented: Boolean,
@@ -45,6 +46,7 @@ data class WorkerStatusResponse(
 fun getDocFromApi(
     code: String,
     languageId: String?,
+    fileName: String?,
     context: String = code,
     width: Int = 80,
     commented: Boolean = true,
@@ -56,9 +58,9 @@ fun getDocFromApi(
 ): Response? {
     val source = "intellij"
     val userId = System.getProperty("user.name")
-    val body = RequestBody(userId, code, languageId, context, width, commented, email, docStyle, source, location, line, custom)
+    val body = RequestBody(userId, code, languageId, fileName, context, width, commented, email, docStyle, source, location, line, custom)
 
-    val apiBase = "https://api.mintlify.com/docs"
+    val apiBase = "http://localhost:5000/docs"
     var endpoint = "$apiBase/write/v3"
     if (code.isEmpty()) {
         endpoint += "/no-selection"
